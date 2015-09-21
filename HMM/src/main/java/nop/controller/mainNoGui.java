@@ -18,5 +18,7 @@ public class mainNoGui {
 	 for(Person s:control.model.getListPersons()){
 		 System.out.println(s.getName());
 	 }
+	 
+	 //test commit 2nd
 	}
 }	
