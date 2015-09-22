@@ -6,17 +6,30 @@ import java.util.Calendar;
 public class Bill implements Serializable {
 	String name;
 	String month;
-	Double amountMoney;
+	double amountMoney;
 	int payerID;
+	int billID;
+	public Bill(){
+		
+	}
 	
-	public Bill(String name, String month, Double amountMoney, int payerID) {
+	public Bill(int billID,String name, String month, Double amountMoney, int payerID) {
 		super();
+		this.billID=billID;
 		this.name = name;
 		this.month = month;
 		this.amountMoney = amountMoney;
 		this.payerID = payerID;
 	}
 	
+	public int getBillID() {
+		return billID;
+	}
+
+	public void setBillID(int billID) {
+		this.billID = billID;
+	}
+
 	public String getName() {
 		return name;
 	}

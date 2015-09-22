@@ -1,14 +1,22 @@
 package nop.dto;
 
 public class PersonBill {
-	double amountPay;
-	double prePay;
+	double amountPay=0;
+	double prePay=0;
 	Person person;
 	
 	public PersonBill(Person person){
 		this.person=person;
 	}
 	
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
 	public double getAmountPay() {
 		return amountPay;
 	}

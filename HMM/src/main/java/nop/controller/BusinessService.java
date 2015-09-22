@@ -18,10 +18,13 @@ public class BusinessService {
 	
 	public double calculateNormalBill(ArrayList<Bill> lstBills, int noOfPerson){
 		double result=0;
-		for(Bill bill: lstBills){
-			result+=bill.getAmountMoney();
+		if(noOfPerson>0){
+			for(Bill bill: lstBills){
+				result+=bill.getAmountMoney();
+			}
 		}
-		return (result/noOfPerson);
+		
+		return Math.round(result/noOfPerson);
 	}
 	
 	public HashMap calculateRentBill(ArrayList<Bill> lstRentBills){

@@ -10,10 +10,12 @@ public class Model {
 	public static Model instance;
 	private static ArrayList<Person> lstPersons=new ArrayList<Person>();
 	private static ArrayList<Bill> lstBills =new  ArrayList<Bill>();
+	private static ArrayList<Bill> lstRentBills =new  ArrayList<Bill>();
 	private static ArrayList<Bill> lstTemplateBills =new  ArrayList<Bill>();
 	
 	public Model(){
 		addPerson();
+		addBill();
 	}
 	
 	public static Model getInstance(){
@@ -30,6 +32,14 @@ public class Model {
 		return this.lstBills;
 	}
 	
+	public static ArrayList<Bill> getListRentBills() {
+		return lstRentBills;
+	}
+
+	public static void setListRentBills(ArrayList<Bill> lstRentBills) {
+		Model.lstRentBills = lstRentBills;
+	}
+
 	public void setListPerson(ArrayList lstPersons){
 		this.lstPersons=lstPersons;
 	}
@@ -39,13 +49,19 @@ public class Model {
 	}
 	
 	public void addBill(){
-		Bill elec=new Bill("Elec", "10/2015", 320000.0, 1);
-		Bill water=new Bill("Elec", "10/2015", 200000.0, 1);
-		Bill rent1=new Bill("Rent Nop", "10/2015", 900000.0, 1);
-		Bill rent2=new Bill("Rent No", "10/2015", 900000.0, 2);
-		Bill rent3=new Bill("Rent Be", "10/2015", 120000.0, 3);
+		Bill elec=new Bill(1,"Elec", "10/2015", 320000.0, 1);
+		Bill water=new Bill(2,"Elec", "10/2015", 200000.0, 1);
 		
+		lstBills.add(elec);
+		lstBills.add(water);
 		
+		Bill rent1=new Bill(3,"Rent Nop", "10/2015", 900000.0, 1);
+		Bill rent2=new Bill(4,"Rent No", "10/2015", 900000.0, 2);
+		Bill rent3=new Bill(5,"Rent Be", "10/2015", 1200000.0, 3);
+		
+		lstRentBills.add(rent1);
+		lstRentBills.add(rent2);
+		lstRentBills.add(rent3);
 	}
 	
 	public void addPerson(){
