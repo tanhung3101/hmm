@@ -19,6 +19,6 @@ public class mainNoGui {
 		 System.out.println(s.getName());
 	 }
 	 
-	 //test commit 2nd
+	 //
 	}
 }	

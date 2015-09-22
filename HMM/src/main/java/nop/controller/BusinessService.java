@@ -1,8 +1,9 @@
 package nop.controller;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import nop.dto.Bill;
 
 /**
  * 
@@ -15,7 +16,20 @@ import java.io.ObjectOutputStream;
  */
 public class BusinessService {
 	
+	public double calculateNormalBill(ArrayList<Bill> lstBills, int noOfPerson){
+		double result=0;
+		for(Bill bill: lstBills){
+			result+=bill.getAmountMoney();
+		}
+		return (result/noOfPerson);
+	}
 	
+	public HashMap calculateRentBill(ArrayList<Bill> lstRentBills){
+			HashMap map=new HashMap();
+			for(Bill bill: lstRentBills){
+				map.put(bill.getPayerID(), bill.getAmountMoney());
+			}
+		return map;
+	}
 	
-
 }
