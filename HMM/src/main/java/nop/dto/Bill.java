@@ -13,6 +13,11 @@ public class Bill implements Serializable {
 		
 	}
 	
+	public Bill(int billID,String name){
+		this.billID=billID;
+		this.name = name;
+	}
+	
 	public Bill(int billID,String name, String month, Double amountMoney, int payerID) {
 		super();
 		this.billID=billID;

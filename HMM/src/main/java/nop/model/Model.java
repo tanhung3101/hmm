@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import nop.dto.*;
 
 import nop.dto.Person;
+	public class Model {
 
-public class Model {
-	public static Model instance;
+		public static Model instance;
 	private static ArrayList<Person> lstPersons=new ArrayList<Person>();
 	private static ArrayList<Bill> lstBills =new  ArrayList<Bill>();
 	private static ArrayList<Bill> lstRentBills =new  ArrayList<Bill>();
@@ -18,10 +18,20 @@ public class Model {
 		addBill();
 	}
 	
+	
+
 	public static Model getInstance(){
 		if(instance==null)
 			return instance=new Model();
 		return instance;
+	}
+	
+	public static ArrayList<Bill> getLstTemplateBills() {
+		return lstTemplateBills;
+	}
+
+	public static void setLstTemplateBills(ArrayList<Bill> lstTemplateBills) {
+		Model.lstTemplateBills = lstTemplateBills;
 	}
 	
 	public ArrayList<Person> getListPersons(){

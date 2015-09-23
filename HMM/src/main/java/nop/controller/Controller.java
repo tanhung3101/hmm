@@ -23,8 +23,33 @@ public class Controller {
 		service=new BusinessService();
 	}
 	
+	public Model getModel(){
+		return this.model;
+	}
+	
 	public void loadData(){
-		
+		loadPerson();
+		loadBill();
+		loadTemplateBill();
+	}
+	
+	public void saveRentBill(){
+		 try {
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(UltilConstance.RENT_BILL_DB));
+            outputStream.writeObject(model.getListRentBills());
+        } catch (IOException ex) {
+       	 System.out.println(ex);
+        } finally {
+        }
+	}
+	
+	public void loadRentBill(){
+		try{
+			ObjectInputStream inputStream =new ObjectInputStream(new FileInputStream(UltilConstance.RENT_BILL_DB));
+			model.setListRentBills(((ArrayList<Bill>)inputStream.readObject()));
+		}catch(Exception ex){
+			
+		}
 	}
 	
 	
@@ -40,6 +65,10 @@ public class Controller {
 	
 	public void loadPerson(){
 		try{
+			FileInputStream file=new FileInputStream(UltilConstance.PERSON_DB);
+			if(file==null){
+				return;
+			}
 			ObjectInputStream inputStream =new ObjectInputStream(new FileInputStream(UltilConstance.PERSON_DB));
 			model.setListPerson((ArrayList<Person>)inputStream.readObject());
 		}catch(Exception ex){
@@ -51,7 +80,7 @@ public class Controller {
 	public void saveBill(){
 		try {
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(UltilConstance.BILL_DB));
-            outputStream.writeObject(model.getListPersons());
+            outputStream.writeObject(model.getListBills());
         } catch (IOException ex) {
        	 System.out.println(ex);
         } finally {
@@ -60,8 +89,12 @@ public class Controller {
 	
 	public void loadBill(){
 		try{
-			ObjectInputStream inputStream =new ObjectInputStream(new FileInputStream(UltilConstance.PERSON_DB));
-			model.setListPerson((ArrayList<Person>)inputStream.readObject());
+			FileInputStream file=new FileInputStream(UltilConstance.BILL_DB);
+			if(file==null){
+				return;
+			}
+			ObjectInputStream inputStream =new ObjectInputStream(new FileInputStream(UltilConstance.BILL_DB));
+			model.setListBill((ArrayList<Person>)inputStream.readObject());
 		}catch(Exception ex){
 			
 		}
@@ -70,7 +103,7 @@ public class Controller {
 	public void saveTemplateBill(){
 		try {
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(UltilConstance.TEMPLATE_BILL_DB));
-            outputStream.writeObject(model.getListPersons());
+            outputStream.writeObject(model.getLstTemplateBills());
         } catch (IOException ex) {
        	 System.out.println(ex);
         } finally {
@@ -79,10 +112,16 @@ public class Controller {
 	
 	public void loadTemplateBill(){
 		try{
-			ObjectInputStream inputStream =new ObjectInputStream(new FileInputStream(UltilConstance.TEMPLATE_BILL_DB));
-			model.setListPerson((ArrayList<Person>)inputStream.readObject());
-		}catch(Exception ex){
 			
+			if(Utility.isExistedFile(UltilConstance.TEMPLATE_BILL_DB)){
+			
+			FileInputStream fileInput=new FileInputStream(UltilConstance.TEMPLATE_BILL_DB);
+			
+			ObjectInputStream inputStream =new ObjectInputStream(fileInput);
+			model.setLstTemplateBills((ArrayList<Bill>)inputStream.readObject());
+			}
+		}catch(Exception ex){
+			 System.out.println(ex);
 		}
 	}
 	
@@ -130,6 +169,14 @@ public class Controller {
 		return 	lstBillsByMonth;	
 	}
 	
+	public void addObjectToTemplateList(Bill bill){
+		try{
+			model.getLstTemplateBills().add(bill);
+			saveTemplateBill();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+	}
 	
 	
 	
