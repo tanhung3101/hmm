@@ -12,13 +12,15 @@ public class User {
 	 @Column(name="USER_ID", nullable=false, unique=true)
 	private int userID;
 	
-	@Column(name = "USER_NAME", nullable =false)
+	@Column(name = "USER_NAME", nullable =false, unique=true)
 	private String userName;
 	
 	@Column(name = "USER_PASSWORD", nullable =false)
 	private String userPassword;
 	
-	
+	public User(){
+		
+	}
 	
 	public User(String userName, String userPassword) {
 		this.userName = userName;

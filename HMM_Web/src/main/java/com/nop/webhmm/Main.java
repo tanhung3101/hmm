@@ -1,16 +1,10 @@
 package com.nop.webhmm;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 
-import java.util.List; 
-import java.util.Date;
-import java.util.Iterator; 
- 
-import org.hibernate.HibernateException; 
-import org.hibernate.Session; 
-import org.hibernate.Transaction;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import com.nop.DAO.UserDAO;
 import com.nop.DTO.User;
 
 public class Main {
@@ -18,12 +12,17 @@ public class Main {
 	public static void main(String[] args) {
 		
 		User user=new User("admin", "admin");
-		
-		Session session = HibernateUtil.getInstance().getSession();
-         System.out.println("session : "+session);
-      Transaction   transaction = session.beginTransaction();
-//      session.get();
-         transaction.commit();
+		UserDAO userDAO=new UserDAO();
+		userDAO.getUsers();
+//      List<User>lstUser=	session.createCriteria(User.class).list();
+      
+//      for(User u:lstUser){
+//    	  if(u.getUserID()==2){
+//    		  session.delete(u);
+//    	  }
+//      }
+//      session.persist(user);
+//         transaction.commit();
 	}
 
 }

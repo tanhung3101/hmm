@@ -10,8 +10,21 @@
 		</layout>
 	</appender>
 	
+	<appender name="Appender2" class="org.apache.log4j.FileAppender">
+       <param name="File" value="D:/Logs/SpringMVC2.log" />
+       <layout class="org.apache.log4j.PatternLayout">
+          <param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n"/>
+       </layout>
+    </appender>
+    
+ 
+	
 	<!-- Application Loggers -->
 	<logger name="com.nop.webhmm">
+		<level value="info" />
+	</logger>
+	
+	<logger name="com.nop.DAO">
 		<level value="info" />
 	</logger>
 	
@@ -36,6 +49,7 @@
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
+		 <appender-ref ref="Appender2" />
 	</root>
 	
 </log4j:configuration>
