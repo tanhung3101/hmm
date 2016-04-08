@@ -1,8 +1,21 @@
 package com.nop.DTO;
 
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "User")
 public class User {
+	
+	 @Id
+	 @GeneratedValue(strategy=GenerationType.IDENTITY)
+	 @Column(name="USER_ID", nullable=false, unique=true)
 	private int userID;
+	
+	@Column(name = "USER_NAME", nullable =false)
 	private String userName;
+	
+	@Column(name = "USER_PASSWORD", nullable =false)
 	private String userPassword;
 	
 	
