@@ -1,0 +1,14 @@
+MySQL:
+user:root
+pass:root
+
+user:admin
+pass:admin
+
++create schema hmm
+user:hmm_admin
+pass:hmm_admin
+
+
+
+
