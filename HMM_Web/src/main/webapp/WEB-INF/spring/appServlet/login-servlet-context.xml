@@ -9,8 +9,12 @@
 
  	
 	<beans:bean id="HandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
-<!-- 	<beans:bean id="CommonService" class="com.nop.services.CommonService"/> -->
-<beans:bean id="UserDAO" class="com.nop.DAO.UserDAO" />
+<!-- 	<beans:bean id="CommonService" class="com.nop.services.CommonService" autowire-candidate="default"/> -->
+	<beans:bean id="CommonServiceImpl" class="com.nop.services.CommonServiceImpl"/>
+	<beans:bean id="UserDAO" class="com.nop.DAO.UserDAO" />
+	<beans:bean id="BillDAO" class="com.nop.DAO.BillDAO" />
+	<beans:bean id="PersonDAO" class="com.nop.DAO.PersonDAO" />
+	
 	
 	<annotation-driven />
 	<resources mapping="/resources/**" location="/resources/" />
@@ -22,6 +26,8 @@
 	
 	<context:component-scan base-package="com.nop.webhmm" />
 	<context:component-scan base-package="com.nop.services" />
+		<context:component-scan base-package="com.nop.DAO" />
+		
 	
 	
 </beans:beans>

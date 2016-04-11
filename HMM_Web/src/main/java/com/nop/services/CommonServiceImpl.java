@@ -3,12 +3,13 @@ package com.nop.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.nop.DAO.UserDAO;
 import com.nop.DTO.User;
 
-@Component
+@Component("CommonServiceImpl")
 public class CommonServiceImpl implements CommonService {
 	
 	@Autowired
