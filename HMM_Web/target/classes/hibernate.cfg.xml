@@ -20,10 +20,13 @@
    <property name="hibernate.hbm2ddl.auto">update</property>
    <property name="hibernate.show_sql">true</property>
    <property name="hibernate.format_sql">true</property>
+   <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
    <!-- List of XML mapping files -->
 <!--    <mapping resource="Employee.hbm.xml"/> -->
 <mapping class="com.nop.DTO.User" />
+<mapping class="com.nop.DTO.Person" />
+<mapping class="com.nop.DTO.Bill" />
 
 </session-factory>
 </hibernate-configuration>
