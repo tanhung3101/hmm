@@ -5,12 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>HMM Web Application</title>
-<link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap.css" rel="stylesheet"/>
+<jsp:include page="../css.jsp" />
 </head>
 <body>
+<jsp:include page="../navTab.jsp" />
 	<div class="container-fluid">
 		<div class="row-fluid">
-			<div class="span12">
+			<div class="col-md-4 col-md-offset-4">
 				<fieldset>
 				<legend>HMM Web Application</legend>
 				<form class="form-horizontal" method="post" action='login/submitLoginForm' name="userForm" id="userForm">
@@ -32,7 +33,7 @@
 <!-- 							<input type="text" name="email" id="email" title="Email" value=""> -->
 <!-- 						</div> -->
 <!-- 					</div> -->
-					<div class="form-actions">
+					<div class="form-actions" >
 						<button type="submit" class="btn btn-success">Login</button>
 						<button type="button" class="btn">Cancel</button>
 					</div>

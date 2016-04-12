@@ -1,11 +1,13 @@
 package com.nop.webhmm;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,27 +17,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.nop.DTO.User;
 import com.nop.services.CommonService;
+import com.nop.services.CommonServiceImpl;
 
 @Controller
+@Scope("session")
 public class LoginController {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
 
 	@Autowired
-	@Qualifier("CommonServiceImpl")
-	private CommonService comService;
-
+	public CommonService comService;
+	
 	public LoginController() {
 
 	}
-
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("init program.");
 
 		return "loginForm";
 	}
+	
 
 	@RequestMapping(value = "/submitLoginForm", method = RequestMethod.POST)
 	public ModelAndView submitLoginForm(
@@ -49,7 +53,7 @@ public class LoginController {
 			if (loginUser!=null && loginUser.getUserPassword().equals(pass)) {
 				view.setViewName("loginSucess");
 			} else {
-				view.setViewName("loginFail");
+				view.setViewName("redirect:/login");
 			}
 			view.addObject("msg", "UserName :" + userName + "\n Password:"
 					+ pass);

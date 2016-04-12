@@ -4,5 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<bean id="commonServiceImpl" class="com.nop.services.CommonServiceImpl">
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
+	
+	
+	<bean id="userDAO" class="com.nop.DAO.UserDAO" />
+	<bean id="billDAO" class="com.nop.DAO.BillDAO" />
+	<bean id="personDAO" class="com.nop.DAO.PersonDAO" />
+	
+	
 </beans>

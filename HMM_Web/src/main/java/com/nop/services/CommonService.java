@@ -2,6 +2,8 @@ package com.nop.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.nop.DTO.User;
 
 public interface CommonService {
