@@ -3,6 +3,8 @@ package com.nop.webhmm;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.nop.Constant.Constant;
 import com.nop.DTO.User;
 import com.nop.services.CommonService;
 import com.nop.services.CommonServiceImpl;
@@ -34,16 +37,19 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model,HttpSession session) {
 		logger.info("init program.");
-
+		User loginUser=(User) session.getAttribute(Constant.LOGIN_USER);
+		if(loginUser!=null){
+			return "redirect:/home";
+		}
 		return "loginForm";
 	}
 	
 
 	@RequestMapping(value = "/submitLoginForm", method = RequestMethod.POST)
 	public ModelAndView submitLoginForm(
-			@ModelAttribute("userLogin") User userLogin) {
+			@ModelAttribute("userLogin") User userLogin,HttpSession session) {
 
 		ModelAndView view = new ModelAndView("loginSucess");
 		String userName = userLogin.getUserName();
@@ -51,7 +57,9 @@ public class LoginController {
 		try {
 			User loginUser= this.comService.findUserByUserName(userName);
 			if (loginUser!=null && loginUser.getUserPassword().equals(pass)) {
-				view.setViewName("loginSucess");
+				view.setViewName("redirect:../home");
+				session.setAttribute("loginUser", loginUser);
+				
 			} else {
 				view.setViewName("redirect:/login");
 			}
