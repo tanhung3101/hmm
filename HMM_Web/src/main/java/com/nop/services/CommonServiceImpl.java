@@ -3,17 +3,27 @@ package com.nop.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
+import com.nop.DAO.BillDAO;
+import com.nop.DAO.PersonDAO;
+import com.nop.DAO.TemplateBillDAO;
 import com.nop.DAO.UserDAO;
+import com.nop.DTO.TemplateBill;
 import com.nop.DTO.User;
 
 public class CommonServiceImpl implements CommonService {
 	
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private TemplateBillDAO temBillDAO;
+	
+	@Autowired
+	private BillDAO billDAO;
+	
+	@Autowired
+	private PersonDAO personDAO;
 	
 	public void setUserDAO(UserDAO userDAO){
 		this.userDAO=userDAO;
@@ -22,6 +32,30 @@ public class CommonServiceImpl implements CommonService {
 	public CommonServiceImpl() {
 	}
 	
+	public TemplateBillDAO getTemBillDAO() {
+		return temBillDAO;
+	}
+
+	public void setTemBillDAO(TemplateBillDAO temBillDAO) {
+		this.temBillDAO = temBillDAO;
+	}
+
+	public BillDAO getBillDAO() {
+		return billDAO;
+	}
+
+	public void setBillDAO(BillDAO billDAO) {
+		this.billDAO = billDAO;
+	}
+
+	public PersonDAO getPersonDAO() {
+		return personDAO;
+	}
+
+	public void setPersonDAO(PersonDAO personDAO) {
+		this.personDAO = personDAO;
+	}
+
 	@Override
 	public List<User> getUser() throws Exception{
 		if(userDAO!=null){
@@ -39,6 +73,41 @@ public class CommonServiceImpl implements CommonService {
 			return user;
 		}else{
 			return null;	
+		}
+	}
+
+	@Override
+	public List<TemplateBill> getTemplateBills() throws Exception {
+		if(temBillDAO!=null){
+			List<TemplateBill> lstTempBill=temBillDAO.getTemplateBills();
+			return lstTempBill;
+		}else{
+			return null;	
+		}
+	}
+
+	@Override
+	public TemplateBill addTemplateBill(TemplateBill temp) throws Exception {
+		if(temBillDAO!=null){
+			TemplateBill lstTempBill=temBillDAO.addTemplateBill(temp);
+			return lstTempBill;
+		}else{
+			return null;	
+		}
+	}
+
+	@Override
+	public void updateTemplateBill(TemplateBill temp) throws Exception {
+		if(temBillDAO!=null){
+			temBillDAO.updateTemplateBill(temp);
+		}
+	}
+
+	@Override
+	public void deleteTemplateBill(TemplateBill temp) throws Exception {
+		// TODO Auto-generated method stub
+		if(temBillDAO!=null){
+			temBillDAO.deleteTemplateBill(temp.getBillID());
 		}
 	}
 

@@ -27,6 +27,7 @@
 <mapping class="com.nop.DTO.User" />
 <mapping class="com.nop.DTO.Person" />
 <mapping class="com.nop.DTO.Bill" />
+<mapping class="com.nop.DTO.TemplateBill" />
 
 </session-factory>
 </hibernate-configuration>

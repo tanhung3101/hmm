@@ -6,8 +6,10 @@ import org.hibernate.SessionFactory;
 
 import com.nop.DAO.BillDAO;
 import com.nop.DAO.PersonDAO;
+import com.nop.DAO.TemplateBillDAO;
 import com.nop.DTO.Bill;
 import com.nop.DTO.Person;
+import com.nop.DTO.TemplateBill;
 
 public class Main {
 	  private static SessionFactory factory; 
@@ -23,18 +25,35 @@ public class Main {
 //		pd.addPerson(person);
 		
 		
-		Bill b=new Bill("Dien","03/2016",150000.0,person);
+//		Bill b=new Bill("Dien","03/2016",150000.0,person);
 		BillDAO bd= new BillDAO();
-		bd.addBill(b);
+//		bd.addBill(b);
 		
 		List<Bill> bills= bd.getBills();
 		
-		for(Bill bi:bills){
-			System.out.println(bi.getPayer().getPersonName());
-			System.out.println(bi.getPayer().getPersonID());
-		}
+//		for(Bill bi:bills){
+//			System.out.println(bi.getPayer().getPersonName());
+//			System.out.println(bi.getPayer().getPersonID());
+//		}
 			
+		TemplateBill temp1=new TemplateBill("Water");
+		TemplateBill temp2=new TemplateBill("Electricity");
+		TemplateBill temp3=new TemplateBill("Internet");
+		
+		
+		TemplateBillDAO td=new TemplateBillDAO();
+//		td.addTemplateBill(temp1);
+//		td.addTemplateBill(temp2);
+//		td.addTemplateBill(temp3);
+		
+		List<TemplateBill> lstTemp= td.getTemplateBills();
+		
+		for(TemplateBill bi:lstTemp){
+			System.out.println(bi.getDescription());
+		}
+		
 		
 	}
 
 }
+

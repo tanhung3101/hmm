@@ -14,6 +14,12 @@
 	href="<%=request.getContextPath() %>/resources/css/hmm.css"
 	rel="stylesheet" />
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/bootstrap.js"></script>	
+<link type="text/css"
+	href="<%=request.getContextPath() %>/resources/jquery-ui/jquery-ui.css"
+	rel="stylesheet" />
+	 
+<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/bootstrap.js"></script>
+<script type="text/javascript" src="<%=url %>/resources/jquery-ui/jquery-ui.js"></script>
+	
 </body>
 </html>

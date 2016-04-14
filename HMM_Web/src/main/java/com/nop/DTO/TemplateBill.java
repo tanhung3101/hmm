@@ -4,7 +4,7 @@ package com.nop.DTO;
 import javax.persistence.*;
 
 @Entity
-@Table(name="TEMPLATE_BILL")
+@Table(name="Template_Bill")
 public class TemplateBill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +13,15 @@ public class TemplateBill {
 
 	@Column(name = "BILL_DESCRIPTION",nullable = false)
 	private String description;
+	
+	public TemplateBill(){
+		
+	}
+	
+
+	public TemplateBill(String description) {
+		this.description = description;
+	}
 
 	public int getBillID() {
 		return billID;

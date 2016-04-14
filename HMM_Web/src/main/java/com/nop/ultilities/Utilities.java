@@ -3,10 +3,14 @@ package com.nop.ultilities;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
+import com.nop.Constant.Constant;
 import com.nop.DTO.Bill;
 import com.nop.DTO.Person;
+import com.nop.DTO.User;
 
-public class Ultilities {
+public class Utilities {
 	public static double parseInDouble(Object value){
 		double result=0;
 			if(value==null) return 0;
@@ -256,5 +260,14 @@ public class Ultilities {
 			return true;
 		else
 			return false;
+	}
+	
+	public static boolean validteSessionLogin(HttpSession session){
+		
+		User loginUser=(User) session.getAttribute(Constant.LOGIN_USER);
+		if(loginUser!=null){
+			return true;
+		}
+		return false;
 	}
 }
