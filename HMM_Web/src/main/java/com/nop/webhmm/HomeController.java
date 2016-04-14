@@ -12,6 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.nop.Constant.Constant;
+import com.nop.DTO.User;
+
 /**
  * Handles requests for the application home page.
  */
@@ -27,8 +30,10 @@ public class HomeController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model,HttpSession session) {
 		
-		
-//		model.addAttribute("serverTime", formattedDate );
+		User loginUser=(User) session.getAttribute(Constant.LOGIN_USER);
+		if(loginUser==null){
+			return "redirect:/login";
+		}
 		
 		return "home";
 	}

@@ -46,6 +46,16 @@ public class LoginController {
 		return "loginForm";
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(Locale locale, Model model,HttpSession session) {
+		logger.info("init program.");
+		ModelAndView view = new ModelAndView("loginForm");
+		view.setViewName("redirect:/login");
+		User loginUser=(User) session.getAttribute(Constant.LOGIN_USER);
+		session.removeAttribute(Constant.LOGIN_USER);
+		return view;
+	}
+	
 
 	@RequestMapping(value = "/submitLoginForm", method = RequestMethod.POST)
 	public ModelAndView submitLoginForm(
@@ -63,9 +73,6 @@ public class LoginController {
 			} else {
 				view.setViewName("redirect:/login");
 			}
-			view.addObject("msg", "UserName :" + userName + "\n Password:"
-					+ pass);
-			view.addObject("userName", userName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

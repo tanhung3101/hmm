@@ -47,8 +47,16 @@
 					<br />
 				</c:when>
 				<c:otherwise>
-					<li><a href=""> Welcom
-							${sessionScope.loginUser.getUserName()}</a></li>
+<!-- 					<li><a href=""> Welcom -->
+<%-- 							${sessionScope.loginUser.getUserName()}</a></li> --%>
+					<li class="dropdown">
+							<a class="dropdown-toggle"	data-toggle="dropdown" href="#">Welcom
+							${sessionScope.loginUser.getUserName()}
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="<%=url%>/login/logout">Log out</a></li>
+								</ul>
+						</li>		
 				</c:otherwise>
 			</c:choose>
 
