@@ -25,6 +25,7 @@
 			<c:choose>
 				<c:when test="${sessionScope.loginUser!=Null}">
 						<li><a href="#">Bill</a></li>
+						<li><a href="#">User</a></li>
 						<li class="dropdown">
 							<a class="dropdown-toggle"	data-toggle="dropdown" href="#">Settings 
 								<span class="caret"></span></a>
