@@ -24,7 +24,7 @@
 			<li class="active"><a href="<%=url%>/home">Home</a></li>
 			<c:choose>
 				<c:when test="${sessionScope.loginUser!=Null}">
-						<li><a href="#">Bill</a></li>
+						<li><a href="<%=url%>/bill">Bill</a></li>
 						<li><a href="<%=url%>/user">User</a></li>
 						<li class="dropdown">
 							<a class="dropdown-toggle"	data-toggle="dropdown" href="#">Settings 

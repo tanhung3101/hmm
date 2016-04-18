@@ -147,6 +147,9 @@ public class CommonServiceImpl implements CommonService {
 	@Override
 	public List<Bill> getBills() throws Exception {
 		// TODO Auto-generated method stub
+		if(billDAO!=null){
+			return billDAO.getBills();
+		}
 		return null;
 	}
 

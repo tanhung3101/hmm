@@ -48,9 +48,13 @@ public class Main {
 		
 		List<TemplateBill> lstTemp= td.getTemplateBills();
 		
-		for(TemplateBill bi:lstTemp){
-			System.out.println(bi.getDescription());
-		}
+		BillDAO db=new BillDAO();
+		
+		Bill bi=new Bill("Water", "3/2016",150000.0);
+		Bill bi2=new Bill("Water", "3/2016",150000.0);
+		
+		db.addBill(bi);
+		db.addBill(bi2);
 		
 		
 	}
