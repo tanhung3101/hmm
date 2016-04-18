@@ -25,12 +25,12 @@
 			<c:choose>
 				<c:when test="${sessionScope.loginUser!=Null}">
 						<li><a href="#">Bill</a></li>
-						<li><a href="#">User</a></li>
+						<li><a href="<%=url%>/user">User</a></li>
 						<li class="dropdown">
 							<a class="dropdown-toggle"	data-toggle="dropdown" href="#">Settings 
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">Profile</a></li>
+									<li><a href="<%=url%>/profile">Profile</a></li>
 									<li><a href="<%=url%>/templateBill">Template Bill</a></li>
 								</ul>
 						</li>

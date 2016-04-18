@@ -26,7 +26,7 @@ public class PersonDAO {
 
            List queryList = query.list();
            if (queryList != null && queryList.isEmpty()) {
-               return null;
+               return (List<Person>) queryList;
            } else {
                logger.info("list " + queryList);
                return (List<Person>) queryList;

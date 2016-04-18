@@ -8,6 +8,8 @@ import com.nop.DAO.BillDAO;
 import com.nop.DAO.PersonDAO;
 import com.nop.DAO.TemplateBillDAO;
 import com.nop.DAO.UserDAO;
+import com.nop.DTO.Bill;
+import com.nop.DTO.Person;
 import com.nop.DTO.TemplateBill;
 import com.nop.DTO.User;
 
@@ -109,6 +111,61 @@ public class CommonServiceImpl implements CommonService {
 		if(temBillDAO!=null){
 			temBillDAO.deleteTemplateBill(temp.getBillID());
 		}
+	}
+
+	@Override
+	public List<Person> getPersons() throws Exception {
+		if(personDAO!=null){
+			return	personDAO.getPersons();
+		}
+		return null;
+	}
+
+	@Override
+	public Person addPerson(Person p) throws Exception {
+		if(personDAO!=null){
+			return	personDAO.addPerson(p);
+		}
+		return null;
+	}
+
+	@Override
+	public void updatePerson(Person p) throws Exception {
+		if(personDAO!=null){
+			personDAO.updatePerson(p);
+		}		
+	}
+
+	@Override
+	public void deletePerson(Person p) throws Exception {
+		// TODO Auto-generated method stub
+		if(personDAO!=null){
+			personDAO.deletePerson(p.getPersonID());
+		}
+	}
+
+	@Override
+	public List<Bill> getBills() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Person addBill(Bill b) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateBill(Bill b) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteBill(Bill b) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 
