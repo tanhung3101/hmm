@@ -56,5 +56,8 @@ public class Person implements Serializable {
 		this.personName = personName;
 	}
 
+	public String toString(){
+		return personName;
+	}
 
 }

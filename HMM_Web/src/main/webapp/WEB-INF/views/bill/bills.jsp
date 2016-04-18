@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page session="true"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,10 +15,10 @@
 <!-- Include jTable script file. -->
 <script src="<%=url %>/resources/jtable/jquery.jtable.js" type="text/javascript"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        //initialize jTable
+Â Â Â Â $(document).ready(function () {
+Â Â Â Â Â Â Â Â //initialize jTable
 
-    });
+Â Â Â Â });
 </script>
 
 </head>
@@ -66,7 +66,7 @@
 					<td>${bill.description}</td>
 					<td>${bill.getMonth()}</td>
 					<td>${bill.getAmountMoney()}</td>
-					<td>${bill.payer}</td>
+					<td>${bill.payer.personName}</td>
 					<td>
 						<spring:url value="/users/${bill.billID}" var="userUrl" />
 						<spring:url value="/users/${bill.billID}/delete" var="deleteUrl" /> 

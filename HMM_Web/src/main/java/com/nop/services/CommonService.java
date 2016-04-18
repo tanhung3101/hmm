@@ -29,7 +29,7 @@ public interface CommonService {
 	
 	
 	public List<Bill> getBills() throws Exception;
-	public Person addBill(Bill b) throws Exception;
+	public Bill addBill(Bill b) throws Exception;
 	public void updateBill(Bill b) throws Exception;
 	public void  deleteBill(Bill b) throws Exception;
 	
