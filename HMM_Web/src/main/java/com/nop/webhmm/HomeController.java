@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nop.Constant.Constant;
 import com.nop.DTO.Bill;
@@ -49,12 +50,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
-	public void doCalculationHMM(Model model,HttpSession session){
+	public void doCalculationHMM(@RequestParam(value="month") String month,Model model,HttpSession session){
 		
 		//month=05/2016
 		
 		try{
 			//get list bill by month
+			model.addAttribute("isCalculated","true");
+			model.addAttribute("monthCalculate",month);
 			List<Bill> lstBill=this.comService.getBills();
 			List<Person> lstPersonInHouse=this.comService.getPersons();
 			int numberPersonInHouse=lstPersonInHouse.size();
@@ -76,7 +79,7 @@ public class HomeController {
 				System.out.println("AleadyPaid:"+eachPerson.getAmountMoneyAlreayPaid());
 				System.out.println("MustPaid:"+eachPerson.getAmountMoneyMustPay());
 			}
-			
+			model.addAttribute("personInHouse",lstPersonInHouse);
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
