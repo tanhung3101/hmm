@@ -18,17 +18,24 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		   <beans:property name="contentType" value="text/html;charset=UTF-8" />
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
 	<beans:bean id="viewResolver2" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	  <beans:property name="contentType" value="text/html;charset=UTF-8" />
 		<beans:property name="prefix" value="/WEB-INF/views/template_bill/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+<!-- 	 <beans:bean id="billFormValidator" class="com.nop.validator.BillFormValidator" /> -->
+
+<!--  <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"> -->
+<!--          <beans:property name="basename" value="messages/validation"/> -->
+<!--  </beans:bean> -->
 	
-	<context:component-scan base-package="com.nop.webhmm" />
+	<context:component-scan base-package="com.nop" />
 	
 	
 	

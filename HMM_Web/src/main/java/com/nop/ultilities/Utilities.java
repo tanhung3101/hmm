@@ -270,4 +270,10 @@ public class Utilities {
 		}
 		return false;
 	}
+	public static boolean isNumeric(String str){
+		  return str.matches("-?\\d+(\\.\\d+)?");  
+		}
+	public static String removeNoneNumericCharacter(String value){
+		return value.replaceAll("[^0-9]", "");
+	}
 }

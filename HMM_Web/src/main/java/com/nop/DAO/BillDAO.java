@@ -87,9 +87,12 @@ public class BillDAO {
 
    public void updateBill(Bill Bill) {
        Session session = null;
+//       Transaction transaction = null;
        try {
            session = HibernateUtil.getInstance().getSession();
+//           transaction = session.beginTransaction();
            session.saveOrUpdate(Bill);
+//           transaction.commit();
            session.flush();
        } catch (Exception e) {
            e.printStackTrace();

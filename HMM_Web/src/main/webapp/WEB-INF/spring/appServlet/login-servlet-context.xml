@@ -18,6 +18,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	  	<beans:property name="contentType" value="text/html;charset=UTF-8" />
 		<beans:property name="prefix" value="/WEB-INF/views/login/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>

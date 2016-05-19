@@ -166,13 +166,34 @@ public class CommonServiceImpl implements CommonService {
 	@Override
 	public void updateBill(Bill b) throws Exception {
 		// TODO Auto-generated method stub
-		
+		if(billDAO!=null){
+			billDAO.updateBill(b);;
+		}
 	}
 
 	@Override
-	public void deleteBill(Bill b) throws Exception {
+	public void deleteBill(int id) throws Exception {
 		// TODO Auto-generated method stub
-		
+		if(billDAO!=null){
+			billDAO.deleteBill(id);
+		}
+	}
+
+	@Override
+	public Bill getBillByID(int id) throws Exception {
+		if(billDAO!=null){
+			return billDAO.findBillById(id);
+		}
+		return null;
+	}
+
+	@Override
+	public Person getPersonByID(int id) throws Exception {
+		// TODO Auto-generated method stub
+		if(personDAO!=null){
+			return personDAO.findPersonById(id);
+		}	
+		return null;
 	}
 
 

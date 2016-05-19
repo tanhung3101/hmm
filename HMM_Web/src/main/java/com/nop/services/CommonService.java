@@ -26,11 +26,13 @@ public interface CommonService {
 	public Person addPerson(Person p) throws Exception;
 	public void updatePerson(Person p) throws Exception;
 	public void  deletePerson(Person p) throws Exception;
-	
+	public Person getPersonByID(int id) throws Exception;
 	
 	public List<Bill> getBills() throws Exception;
+	public Bill getBillByID(int id) throws Exception;
 	public Bill addBill(Bill b) throws Exception;
 	public void updateBill(Bill b) throws Exception;
-	public void  deleteBill(Bill b) throws Exception;
+	public void  deleteBill(int b) throws Exception;
+	
 	
 }

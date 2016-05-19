@@ -12,10 +12,17 @@
 		<property name="temBillDAO" ref="temBillDAO"></property>
 	</bean>
 	
-	
+	<bean id="billFormValidator" class="com.nop.validator.BillFormValidator" >
+	</bean>
 	<bean id="userDAO" class="com.nop.DAO.UserDAO" />
 	<bean id="billDAO" class="com.nop.DAO.BillDAO" />
 	<bean id="personDAO" class="com.nop.DAO.PersonDAO" />
 	<bean id="temBillDAO" class="com.nop.DAO.TemplateBillDAO" />
 	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages/validation</value>
+		</property>
+	</bean>	
 </beans>

@@ -1,7 +1,6 @@
 package com.nop.DTO;
 
 import java.io.Serializable;
-import java.util.Locale.Category;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -39,9 +38,9 @@ public class Bill implements Serializable {
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "bill_person", joinColumns = { 
-			@JoinColumn(name = "BILL_ID", nullable = false, updatable = false) }, 
+			@JoinColumn(name = "BILL_ID", nullable = false, updatable = true) }, 
 			inverseJoinColumns = { @JoinColumn(name = "PERSON_ID", 
-					nullable = false, updatable = false) })
+					nullable = false, updatable = true) })
 	private Person payer;
 	
 	@Column(name = "CREATED_DATE")

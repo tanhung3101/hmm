@@ -39,5 +39,7 @@ public class TemplateBill {
 		this.description = description;
 	}
 	
-	
+	public String toString(){
+		return this.description;
+	}
 }

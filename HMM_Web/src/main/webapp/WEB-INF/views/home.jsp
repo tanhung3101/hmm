@@ -1,9 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.nop.DTO.*"%>
 <%@ page session="true"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,8 +22,10 @@
 </head>
 <body>
 <jsp:include page="navTab.jsp" />
-
-
+<spring:url value="/home" var="CalculationActionUrl" />
+<form:form class="form-horizontal" method="post" action="${CalculationActionUrl}">
+	<button class="btn-lg btn-primary " style="margin-right:20px;">Calculation</button>	 
+</form:form>
 	
 </body>
 </html>

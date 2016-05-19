@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -28,7 +29,14 @@ public class Person implements Serializable {
 //	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "persons")
 //	private List<Bill> lstPaiedBill;
 	
+	@Transient
+	private double amountMoneyMustPay=0;
+
+	@Transient
+	private double amountMoneyAlreayPaid=0;
 	
+	@Transient
+	private double amountMoneyTotalinAMonth=0;
 	
 //	public List<Bill> getPaiedBills() {
 //		return this.lstPaiedBill;
@@ -40,6 +48,30 @@ public class Person implements Serializable {
 	
 	public Person(String personName) {
 		this.personName = personName;
+	}
+	
+	public double getAmountMoneyMustPay() {
+		return amountMoneyMustPay;
+	}
+
+	public void setAmountMoneyMustPay(double amountMoneyMustPay) {
+		this.amountMoneyMustPay = amountMoneyMustPay;
+	}
+
+	public double getAmountMoneyAlreayPaid() {
+		return amountMoneyAlreayPaid;
+	}
+
+	public void setAmountMoneyAlreayPaid(double amountMoneyAlreayPaid) {
+		this.amountMoneyAlreayPaid = amountMoneyAlreayPaid;
+	}
+
+	public double getAmountMoneyTotalinAMonth() {
+		return amountMoneyTotalinAMonth;
+	}
+
+	public void setAmountMoneyTotalinAMonth(double amountMoneyTotalinAMonth) {
+		this.amountMoneyTotalinAMonth = amountMoneyTotalinAMonth;
 	}
 	
 	public int getPersonID() {
@@ -59,5 +91,8 @@ public class Person implements Serializable {
 	public String toString(){
 		return personName;
 	}
-
+	
+	public void addAmountMoneyAlreadyPaid(double value){
+		this.amountMoneyAlreayPaid+=value;
+	}
 }
