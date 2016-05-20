@@ -21,7 +21,15 @@
 <link type="text/css"
 	href="<%=request.getContextPath() %>/resources/jquery-ui/jquery-ui.css"
 	rel="stylesheet" />
-
+<link
+	href="<%=request.getContextPath()%>/resources/date-picker/css/bootstrap-datepicker.css"
+	rel="stylesheet" type="text/css" />	
+<script
+	src="<%=request.getContextPath()%>/resources/date-picker/js/bootstrap-datepicker.js"
+	type="text/javascript"></script>	
+	
+<jsp:include page="flatThemeCSS.jsp" />
+	
 
 </head>
 <body>
