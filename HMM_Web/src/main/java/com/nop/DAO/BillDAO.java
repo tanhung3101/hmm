@@ -1,5 +1,6 @@
 package com.nop.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -76,6 +77,28 @@ public class BillDAO {
                return null;
            } else {
                return (Bill) queryList.get(0);
+           }
+       } catch (Exception e) {
+           e.printStackTrace();
+           return null;
+       } finally {
+           session.close();
+       }
+   }
+   
+   public List<Bill> findBillByMonth(String month) {
+       Session session = null;
+       logger.info(this.toString()+"-start findBillByBillName()");
+       try {
+           session = HibernateUtil.getInstance().getSession();
+           Query query = session.createQuery("from Bill s where s.month = :month");
+           query.setParameter("month", month);
+
+          java.util.List queryList = query.list();
+           if (queryList != null && queryList.isEmpty()) {
+               return null;
+           } else {
+               return (java.util.List<Bill>) queryList;
            }
        } catch (Exception e) {
            e.printStackTrace();

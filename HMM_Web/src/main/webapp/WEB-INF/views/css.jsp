@@ -27,8 +27,9 @@
 <script
 	src="<%=request.getContextPath()%>/resources/date-picker/js/bootstrap-datepicker.js"
 	type="text/javascript"></script>	
-	
-<jsp:include page="flatThemeCSS.jsp" />
+<%-- <link type="text/css"	href="<%=request.getContextPath() %>/resources/login/css/reset.css"	rel="stylesheet" /> --%>
+<%-- <link type="text/css"	href="<%=request.getContextPath() %>/resources/login/css/style.css"	rel="stylesheet" />	 --%>
+<%-- <jsp:include page="flatThemeCSS.jsp" /> --%>
 	
 
 </head>

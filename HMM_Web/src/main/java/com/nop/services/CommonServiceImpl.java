@@ -196,5 +196,14 @@ public class CommonServiceImpl implements CommonService {
 		return null;
 	}
 
+	@Override
+	public List<Bill> getBillsByMonth(String month) throws Exception {
+		// TODO Auto-generated method stub
+		if(billDAO!=null){
+			return billDAO.findBillByMonth(month);
+		}
+		return null;
+	}
+
 
 }

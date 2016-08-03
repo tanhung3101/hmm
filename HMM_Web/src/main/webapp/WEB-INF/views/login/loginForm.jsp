@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta charset="UTF-8">
 <title>HMM Web Application</title>
 <jsp:include page="../css.jsp" />
 </head>
@@ -18,9 +19,9 @@
 
 %>
 
-
 <jsp:include page="../navTab.jsp" />
-	<div class="container-fluid">
+
+	<div class="container-fluid wrap">
 		<div class="row-fluid">
 			<div class="col-md-4 col-md-offset-4">
 				<fieldset>
@@ -38,15 +39,8 @@
 							<input type="password" name="userPassword" id="userPassword" title="Password" value="">
 						</div>
 					</div>
-<!-- 					<div class="control-group"> -->
-<!-- 						<label class="control-label">Email</label> -->
-<!-- 						<div class="controls"> -->
-<!-- 							<input type="text" name="email" id="email" title="Email" value=""> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-					<div class="form-actions" >
-						<button type="submit" class="btn btn-success">Login</button>
-						<button type="button" class="btn">Cancel</button>
+					<div class="form-actions" style="margin-top:10px;" >
+						<button type="submit" class="btn btn-success" >Login</button>						
 					</div>
 				</form>
 				</fieldset>

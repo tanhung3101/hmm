@@ -21,9 +21,10 @@
 			<a class="navbar-brand" href="#">HMM Web App</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="<%=url%>/home">Home</a></li>
+			<li class=""><a href="<%=url%>/home">Home</a></li>
 			<c:choose>
 				<c:when test="${sessionScope.loginUser!=Null}">
+						<li><a href="<%=url%>/calculate">Calculation</a></li>
 						<li><a href="<%=url%>/bill">Bill</a></li>
 						<li><a href="<%=url%>/user">User</a></li>
 						<li class="dropdown">

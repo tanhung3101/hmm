@@ -29,6 +29,7 @@ public interface CommonService {
 	public Person getPersonByID(int id) throws Exception;
 	
 	public List<Bill> getBills() throws Exception;
+	public List<Bill> getBillsByMonth(String month) throws Exception;
 	public Bill getBillByID(int id) throws Exception;
 	public Bill addBill(Bill b) throws Exception;
 	public void updateBill(Bill b) throws Exception;
