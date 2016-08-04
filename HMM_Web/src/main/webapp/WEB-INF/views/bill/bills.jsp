@@ -29,13 +29,9 @@
 
 
 <div class="main_container">
-	<h1>Bills</h1>
 	
-		
-</div>
-
-<div class="container">
-
+				<!-- content -->
+				<div class="main_content_2">
 		<c:if test="${not empty msg}">
 			<div class="alert alert-${css} alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -46,11 +42,13 @@
 		</c:if>
 		
 		<spring:url value="/bill/add" var="urlAddUser" />
+		
+			<h1>All Bills</h1>
 		<div class="active"><a href="${urlAddUser}">Add New Bill</a></div>
 
-		<h1>All Bills</h1>
+	
 
-		<table class="table table-striped">
+		<table class="total_bills_in_month table table-striped ">
 			<thead>
 				<tr>
 					<th>#ID</th>
@@ -84,7 +82,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-
+	</div>
 	</div>
 </body>
 </html>

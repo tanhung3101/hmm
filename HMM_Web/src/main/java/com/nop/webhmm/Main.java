@@ -11,6 +11,7 @@ import com.nop.DAO.TemplateBillDAO;
 import com.nop.DTO.Bill;
 import com.nop.DTO.Person;
 import com.nop.DTO.TemplateBill;
+import com.nop.ultilities.Utilities;
 
 public class Main {
 	  private static SessionFactory factory; 
@@ -61,7 +62,14 @@ public class Main {
 			System.out.println(1 + new Random().nextInt(50));
 		}
 		
+		double a=1466666.6666666667;
+//		double a=145.4;
+		double b;
 		
+		b=Utilities.roundUpMoney(a);
+		System.out.println(b);
+		
+		System.out.println(Utilities.generateJsonString());
 		
 	}
 

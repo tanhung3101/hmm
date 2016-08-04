@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.nop.ultilities.Utilities;
+
 
 @Entity
 @Table(name = "Person")
@@ -38,6 +40,15 @@ public class Person implements Serializable {
 	@Transient
 	private double amountMoneyTotalinAMonth=0;
 	
+	@Transient
+	private String amountMoneyMustPayStringValue;
+	
+	@Transient
+	private String amountMoneyAlreayPaidStringValue;
+	
+	@Transient
+	private String amountMoneyTotalinAMonthStringValue;
+	
 //	public List<Bill> getPaiedBills() {
 //		return this.lstPaiedBill;
 //	}
@@ -56,6 +67,7 @@ public class Person implements Serializable {
 
 	public void setAmountMoneyMustPay(double amountMoneyMustPay) {
 		this.amountMoneyMustPay = amountMoneyMustPay;
+		this.setAmountMoneyMustPayStringValue(Utilities.roundUpMoneyToString(amountMoneyMustPay));
 	}
 
 	public double getAmountMoneyAlreayPaid() {
@@ -72,6 +84,7 @@ public class Person implements Serializable {
 
 	public void setAmountMoneyTotalinAMonth(double amountMoneyTotalinAMonth) {
 		this.amountMoneyTotalinAMonth = amountMoneyTotalinAMonth;
+		this.setAmountMoneyTotalinAMonthStringValue(Utilities.roundUpMoneyToString(amountMoneyTotalinAMonth));
 	}
 	
 	public int getPersonID() {
@@ -94,5 +107,35 @@ public class Person implements Serializable {
 	
 	public void addAmountMoneyAlreadyPaid(double value){
 		this.amountMoneyAlreayPaid+=value;
+		this.setAmountMoneyAlreayPaidStringValue(Utilities.roundUpMoneyToString(amountMoneyAlreayPaid));
 	}
+
+	public String getAmountMoneyMustPayStringValue() {
+		return amountMoneyMustPayStringValue;
+	}
+
+	public String getAmountMoneyAlreayPaidStringValue() {
+		return amountMoneyAlreayPaidStringValue;
+	}
+
+	public String getAmountMoneyTotalinAMonthStringValue() {
+		return amountMoneyTotalinAMonthStringValue;
+	}
+
+	public void setAmountMoneyMustPayStringValue(
+			String amountMoneyMustPayStringValue) {
+		this.amountMoneyMustPayStringValue = amountMoneyMustPayStringValue;
+	}
+
+	public void setAmountMoneyAlreayPaidStringValue(
+			String amountMoneyAlreayPaidStringValue) {
+		this.amountMoneyAlreayPaidStringValue = amountMoneyAlreayPaidStringValue;
+	}
+
+	public void setAmountMoneyTotalinAMonthStringValue(
+			String amountMoneyTotalinAMonthStringValue) {
+		this.amountMoneyTotalinAMonthStringValue = amountMoneyTotalinAMonthStringValue;
+	}
+	
+	
 }

@@ -14,9 +14,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.mapping.Set;
 import org.joda.time.DateTime;
+
+import com.nop.ultilities.Utilities;
 
 @Entity
 @Table(name = "Bill")
@@ -33,7 +36,7 @@ public class Bill implements Serializable {
 	@Column(name = "MONTH",nullable = false)
 	private String month;
 
-	@Column(name = "AMOUNT_MONEY",nullable = false)
+	
 	private double amountMoney;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -45,6 +48,11 @@ public class Bill implements Serializable {
 	
 	@Column(name = "CREATED_DATE")
 	private DateTime createdDate;
+	
+	@Transient
+	private String amountMoneyStringValue;
+
+	
 
 	public Bill() {
 
@@ -104,9 +112,11 @@ public class Bill implements Serializable {
 	public Double getAmountMoney() {
 		return amountMoney;
 	}
-
+	
+	@Column(name = "AMOUNT_MONEY",nullable = false)
 	public void setAmountMoney(Double amountMoney) {
 		this.amountMoney = amountMoney;
+		this.setAmountMoneyStringValue(Utilities.convertDoubleToMoney(this.amountMoney));
 	}
 	
 	public Person getPayer() {
@@ -115,6 +125,14 @@ public class Bill implements Serializable {
 	
 	public void setPayer(Person p) {
 		this.payer =p;
+	}
+	
+	public String getAmountMoneyStringValue() {
+		return amountMoneyStringValue;
+	}
+
+	public void setAmountMoneyStringValue(String amountMoneyStringValue) {
+		this.amountMoneyStringValue = amountMoneyStringValue;
 	}
 
 }

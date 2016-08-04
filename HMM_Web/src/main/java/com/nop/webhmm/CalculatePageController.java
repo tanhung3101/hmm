@@ -65,14 +65,18 @@ public class CalculatePageController {
 			model.addAttribute("monthCalculate",month);
 			
 			if(month.trim().length()>0){
+				model.addAttribute("isHasRecord","true");
 				List<Bill> lstBill=this.comService.getBillsByMonth(month);
 				List<Person> lstPersonInHouse=this.comService.getPersons();
 				int numberPersonInHouse=lstPersonInHouse.size();
 				double totalAmountMoneyAllPerson=0;
-				if(lstBill==null)
+				if(lstBill==null){
+					model.addAttribute("isHasRecord","false");
 					return VIEWS_FOLER+"/calculate";
+				}
 				for(Bill eachBill:lstBill){
 					totalAmountMoneyAllPerson+=eachBill.getAmountMoney();
+					eachBill.setAmountMoneyStringValue(Utilities.convertDoubleToMoney(eachBill.getAmountMoney()));
 				}
 				
 				double totalEachPersonMustPay=totalAmountMoneyAllPerson/numberPersonInHouse;
@@ -89,6 +93,11 @@ public class CalculatePageController {
 					System.out.println("MustPaid:"+eachPerson.getAmountMoneyMustPay());
 				}
 				model.addAttribute("personInHouse",lstPersonInHouse);
+				model.addAttribute("lstBills",lstBill);
+				model.addAttribute("totalAmountInMonth",Utilities.roundUpMoneyToString(totalAmountMoneyAllPerson));
+				
+			}else{
+				model.addAttribute("isHasRecord","false");
 			}
 			
 		}catch(Exception ex){

@@ -130,9 +130,11 @@ $(document).ready(function () {
 				<c:choose>
 					<c:when test="${status=='create'}">
 						<button type="submit" class="btn-lg btn-primary pull-right">Add</button>
+						<button class="btn-lg btn-primary pull-right" style="margin-right:20px;" onclick="location.href='/bill'">Cancel</button>
 					</c:when>
 					<c:otherwise>
 						<button type="submit" class="btn-lg btn-primary pull-right">Update</button>
+					    <button class="btn-lg btn-primary pull-right" style="margin-right:20px;" onclick="location.href='${billUrl}'">Cancel</button>								
 					</c:otherwise>
 				</c:choose>
 				<spring:url value="/bill" var="billUrl" />

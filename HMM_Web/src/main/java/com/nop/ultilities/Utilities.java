@@ -1,9 +1,15 @@
 package com.nop.ultilities;
 
 import java.io.File;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.nop.Constant.Constant;
 import com.nop.DTO.Bill;
@@ -275,5 +281,52 @@ public class Utilities {
 		}
 	public static String removeNoneNumericCharacter(String value){
 		return value.replaceAll("[^0-9]", "");
+	}
+	public static String roundUpMoneyToString(double value){
+		DecimalFormat df=new DecimalFormat("###,###,###");
+		String formate = df.format(Math.round( value * 1.0 ) / 1.0); 
+		return formate;
+	}
+	
+	public static String convertDoubleToMoney(double value){
+		DecimalFormat df=new DecimalFormat("###,###,###");
+		String formate = df.format(value); 
+		return formate;
+	}
+	
+	public static double roundUpMoney(double value){
+		DecimalFormat df=new DecimalFormat("###,###,###");
+		String formate = df.format(Math.round( value * 1.0 ) / 1.0); 
+		double finalValue=Double.MIN_VALUE;
+		try {
+			finalValue = df.parse(formate).doubleValue();
+//			finalValue = Math.round( value * 1.0 ) / 1.0;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return finalValue;
+	}
+	
+	public static String generateJsonString(){
+		String jsonValue="";			
+		
+		JSONObject outerObject = new JSONObject();
+		JSONArray outerArray = new JSONArray();
+		JSONObject innerObject = new JSONObject();
+		JSONArray innerArray = new JSONArray();
+
+		innerArray.put("shakil");
+		innerArray.put("29");
+		innerArray.put("7676");
+
+		innerObject.put("id", "2");
+		innerObject.put("data", innerArray);
+
+		outerArray.put(innerObject);
+
+		outerObject.put("rows", outerArray);
+		jsonValue=outerObject.toString();
+		return jsonValue;
 	}
 }

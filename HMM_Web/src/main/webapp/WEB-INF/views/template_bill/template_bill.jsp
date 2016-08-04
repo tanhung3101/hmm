@@ -7,7 +7,7 @@
 <title>Template Bill</title>
 <jsp:include page="../css.jsp"></jsp:include>
 <% String url=request.getContextPath(); %>
-<link href="<%=request.getContextPath() %>/resources/jtable/themes/metro/crimson/jtable.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/resources/jtable/themes/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
 <!-- Include jTable script file. -->
 <script src="<%=request.getContextPath() %>/resources/jtable/jquery.jtable.js" type="text/javascript"></script>
 <script type="text/javascript">

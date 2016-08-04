@@ -1,10 +1,21 @@
 .main_container{
 	margin-left: 15%;
 	margin-right: 15%;
+	font-family: cursive;
+}
+.main_content{
+	width: 600px;
+	margin:0 auto;
+}
+
+.main_content_2{
+	width: 800px;
+	margin:0 auto;
 }
 
 .content{
 	margin-left: 20%;
+	font-family: cursive;
 }
 
 
@@ -21,4 +32,95 @@
 table, th, td {
 	padding: 20px 10px 10px 10px;
     border: 1px solid black;
+    font-family: cursive;
+}
+
+.label_form{
+	    font-weight: bold;
+	   background-color: SteelBlue;
+	   color:white;
+}
+
+.value_form{
+	text-align: center;
+	background-color:WhiteSmoke;
+}
+.person_info{
+/* 	padding-top: 20px; */
+/*     padding-right: 20px; */
+    padding-bottom: 20px;
+/*     padding-left: 20px; */
+
+}
+
+.calcu_person_detail_form{
+/* 	border-width: 2px 0 2px 2px; */
+/*   -webkit-box-sizing: border-box; */
+/*   -moz-box-sizing: border-box; */
+/*   box-sizing: border-box; */
+/*   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); */
+/*   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); */
+}
+
+.header_Title{
+	font-weight:bold;
+	font-size: 35px;
+	font-family: cursive;
+}
+.header_Title_warning{
+	font-weight: bold;
+    font-size: 25px;
+    font-family: cursive;
+    font-style: italic;
+}
+
+.line_breaker{
+	border-bottom: 1px gray;
+}
+
+
+.total_bills_in_month table {
+  font-family: "Helvetica Neue", Helvetica, sans-serif
+}
+
+.total_bills_in_month caption {
+  text-align: left;
+  color: silver;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px;
+}
+
+.total_bills_in_month  thead {
+  background: SteelBlue;
+  color: white;
+}
+
+.total_bills_in_month  th,
+.total_bills_in_month td {
+  padding: 5px 10px;
+}
+
+.total_bills_in_month tbody tr:nth-child(even) {
+  background: WhiteSmoke;
+}
+
+.total_bills_in_month tbody tr td:nth-child(2) {
+  text-align:center;
+}
+
+.total_bills_in_month tbody tr td:nth-child(3),
+.total_bills_in_month tbody tr td:nth-child(4) {
+  text-align: right;
+  font-family: monospace;
+}
+
+.total_bills_in_month tfoot {
+  background: SeaGreen;
+  color: white;
+  text-align: right;
+}
+
+.total_bills_in_month tfoot tr th:last-child {
+  font-family: monospace;
 }

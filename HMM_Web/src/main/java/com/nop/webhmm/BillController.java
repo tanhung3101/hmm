@@ -138,15 +138,19 @@ public class BillController {
 			Bill billSelected = null;
 			try {
 				billSelected=this.comService.getBillByID(id);
+				List<Person> lstPersons =this.comService.getPersons();
+				model.addAttribute("personList", lstPersons);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+		
 			model.addAttribute("billForm", billSelected);
 //			
 //			populateDefaultModel(model);
 			
-			return "bill/billform";
+			return VIEWS_FOLER+"/billForm";
 
 		}
 		
