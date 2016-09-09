@@ -34,7 +34,13 @@
                     width: '30%',
 					edit : true,
 					create : true
-                }
+                },
+				personEmail: {
+	                    title: 'Email',
+	                    width: '30%',
+						edit : true,
+						create : true
+	                }
                  
             }
         });        

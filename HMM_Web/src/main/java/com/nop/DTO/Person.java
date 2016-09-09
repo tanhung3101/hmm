@@ -28,6 +28,10 @@ public class Person implements Serializable {
 	@Column(name="PERSON_NAME",nullable=false)
 	private  String personName;
 	
+	@Column(name="PERSON_EMAIL",nullable=true)
+	private String personEmail;
+	
+	
 //	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "persons")
 //	private List<Bill> lstPaiedBill;
 	
@@ -76,6 +80,7 @@ public class Person implements Serializable {
 
 	public void setAmountMoneyAlreayPaid(double amountMoneyAlreayPaid) {
 		this.amountMoneyAlreayPaid = amountMoneyAlreayPaid;
+		this.setAmountMoneyAlreayPaidStringValue(Utilities.roundUpMoneyToString(amountMoneyAlreayPaid));
 	}
 
 	public double getAmountMoneyTotalinAMonth() {
@@ -135,6 +140,14 @@ public class Person implements Serializable {
 	public void setAmountMoneyTotalinAMonthStringValue(
 			String amountMoneyTotalinAMonthStringValue) {
 		this.amountMoneyTotalinAMonthStringValue = amountMoneyTotalinAMonthStringValue;
+	}
+
+	public String getPersonEmail() {
+		return personEmail;
+	}
+
+	public void setPersonEmail(String personEmail) {
+		this.personEmail = personEmail;
 	}
 	
 	

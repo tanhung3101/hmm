@@ -95,7 +95,7 @@ public class CalculatePageController {
 				model.addAttribute("personInHouse",lstPersonInHouse);
 				model.addAttribute("lstBills",lstBill);
 				model.addAttribute("totalAmountInMonth",Utilities.roundUpMoneyToString(totalAmountMoneyAllPerson));
-				
+				model.addAttribute("jsonListBill",Utilities.removeAngleBracketInJSON(Utilities.generateJsonString(lstBill)));
 			}else{
 				model.addAttribute("isHasRecord","false");
 			}
@@ -109,11 +109,18 @@ public class CalculatePageController {
 	
 	public void setAmountMoneyAlreadyPaidToPerson(List<Bill> lstBill,List<Person> lstPerson){
 		
+		//init Amount Already Paid
+		for(Person p:lstPerson){
+			p.setAmountMoneyAlreayPaid(0);
+		}
+		
+		
 		for(int i=0;i<lstBill.size();i++){
 			Bill itemBill=lstBill.get(i);
 			if(itemBill.getPayer()!=null){
 				for(int j=0;j<lstPerson.size();j++){
 					Person itemPerson=lstPerson.get(j);
+					
 					if( itemBill.getPayer().getPersonID()==itemPerson.getPersonID()){
 						itemPerson.addAmountMoneyAlreadyPaid(itemBill.getAmountMoney());
 					}

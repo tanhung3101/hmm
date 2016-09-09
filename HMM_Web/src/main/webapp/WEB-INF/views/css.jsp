@@ -27,9 +27,13 @@
 <script
 	src="<%=request.getContextPath()%>/resources/date-picker/js/bootstrap-datepicker.js"
 	type="text/javascript"></script>	
+	
 <%-- <link type="text/css"	href="<%=request.getContextPath() %>/resources/login/css/reset.css"	rel="stylesheet" /> --%>
 <%-- <link type="text/css"	href="<%=request.getContextPath() %>/resources/login/css/style.css"	rel="stylesheet" />	 --%>
 <%-- <jsp:include page="flatThemeCSS.jsp" /> --%>
+
+<script src="<%=request.getContextPath()%>/resources/chart/highcharts.js"></script>
+<script src="<%=request.getContextPath()%>/resources/chart/exporting.js"></script>
 	
 
 </head>

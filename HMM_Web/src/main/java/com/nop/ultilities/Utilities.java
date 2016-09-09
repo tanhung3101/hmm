@@ -308,7 +308,16 @@ public class Utilities {
 		return finalValue;
 	}
 	
-	public static String generateJsonString(){
+	public static String removeAngleBracketInJSON(String value){
+		
+		if(value.trim().length()>0 && value.charAt(0)=='{' && value.charAt(value.length()-1)=='}'){
+			value=value.substring(5, value.length()-2);			
+		}
+		
+		return value;
+	}
+	
+	public static String generateJsonString(List<Bill> lstBills){
 		String jsonValue="";			
 		
 		JSONObject outerObject = new JSONObject();
@@ -316,16 +325,25 @@ public class Utilities {
 		JSONObject innerObject = new JSONObject();
 		JSONArray innerArray = new JSONArray();
 
-		innerArray.put("shakil");
-		innerArray.put("29");
-		innerArray.put("7676");
+		JSONObject typeBillObject = new JSONObject();
+		
+		ArrayList<JSONObject> lstDetailObject=new  ArrayList<JSONObject>();
+		
+		for(Bill eachBill: lstBills){
+			JSONObject DetailOB=new JSONObject();
+			DetailOB.put("name", eachBill.getDescription());
+			DetailOB.put("y", eachBill.getAmountMoney());
+			lstDetailObject.add(DetailOB);
+		}
+//		typeBillObject.put(typeBillObject, lstDetailObject);
 
-		innerObject.put("id", "2");
-		innerObject.put("data", innerArray);
+		innerObject.put("name", "Brands");
+		innerObject.put("colorByPint",true);		
+		innerObject.put("data", lstDetailObject);
 
 		outerArray.put(innerObject);
 
-		outerObject.put("rows", outerArray);
+		outerObject.put("", outerArray);
 		jsonValue=outerObject.toString();
 		return jsonValue;
 	}

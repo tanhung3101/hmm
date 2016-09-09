@@ -27,9 +27,9 @@ public class Main {
 ////		pd.addPerson(person);
 //		
 //		
-////		Bill b=new Bill("Dien","03/2016",150000.0,person);
+//		Bill b=new Bill("Dien","03/2016",150000.0,person);
 //		BillDAO bd= new BillDAO();
-////		bd.addBill(b);
+//		bd.addBill(b);
 //		
 //		List<Bill> bills= bd.getBills();
 //		
@@ -68,8 +68,9 @@ public class Main {
 		
 		b=Utilities.roundUpMoney(a);
 		System.out.println(b);
-		
-		System.out.println(Utilities.generateJsonString());
+		BillDAO bd= new BillDAO();
+		List<Bill> bills= bd.getBills();
+		System.out.println(Utilities.removeAngleBracketInJSON(Utilities.generateJsonString(bills)));
 		
 	}
 

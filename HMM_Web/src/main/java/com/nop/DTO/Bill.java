@@ -36,7 +36,7 @@ public class Bill implements Serializable {
 	@Column(name = "MONTH",nullable = false)
 	private String month;
 
-	
+	@Column(name = "AMOUNT_MONEY",nullable = false)
 	private double amountMoney;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -113,7 +113,7 @@ public class Bill implements Serializable {
 		return amountMoney;
 	}
 	
-	@Column(name = "AMOUNT_MONEY",nullable = false)
+	
 	public void setAmountMoney(Double amountMoney) {
 		this.amountMoney = amountMoney;
 		this.setAmountMoneyStringValue(Utilities.convertDoubleToMoney(this.amountMoney));

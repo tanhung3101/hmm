@@ -34,8 +34,50 @@
 			startView : 1,
 			minViewMode : 1
 		});
+		//init Charts
+		var data = '${jsonListBill}';
+// 		data=data.substring(, data.length-1);
+		doInitChart(data);
+		console.log(data);
+		
 	});
-</script>
+	
+	function doInitChart(data){
+		$('#bill_chart').highcharts({
+	        chart: {
+	            plotBackgroundColor: null,
+	            plotBorderWidth: null,
+	            plotShadow: true,
+	            type: 'pie'
+	        },
+	        title: {
+	            text: ''
+	        },
+	        tooltip: {
+	            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	        },
+	        plotOptions: {
+	            pie: {
+	                allowPointSelect: true,
+	                cursor: 'pointer',
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+	                    style: {
+	                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+	                    }
+	                }
+	            }
+	        }
+// 	        ,"series":[{"data":[{"name":"Nước","y":100000},{"name":"Tiền Nhà","y":4200000},{"name":"Điện","y":300000}],"colorByPint":true,"name":"Brands"}]
+	        ,"series":[${jsonListBill}] //just leave the code like this
+// 	        ,"series":data
+	    });
+	}
+<!-- </script> -->
+
+
+
 </head>
 <body>
 	<div class="wrap">
@@ -85,7 +127,8 @@
 								<h3 class="header_Title">Bill for ${monthCalculate}</h3>
 								
 								<!-- Show list Bill in selected Month -->
-								<div class="row total_bills_in_month" style="margin-bottom:20px;">
+								<div class="row " style="margin-bottom:20px;">
+								<div class="total_bills_in_month col-md-6">
 									<table>
 <%-- 									  <caption>Camping Costs</caption> --%>
 									  <thead>
@@ -118,17 +161,22 @@
 									  </tfoot>
 									  
 									</table>
+									</div>
+									
+									<div class="col-md-6">
+								<div id="bill_chart" style="min-width: 400px; height: 300px; max-width: 400px; margin: 0 auto"></div>
 								</div>
+								</div> <!-- end row -->
 								<!--End Show list Bill in selected Month -->
 								
 								
 								
 								<div class="row">
 								<c:forEach items="${personInHouse}" var="itemPerson" varStatus="loop">
-									<div class="person_info " style="">
+									<div class="person_info col-md-6" style="">
 									<table class="calcu_person_detail_form">
 										<tr>
-											<td class="label_form">Person:</td>
+											<td class="label_form">Person Name:</td>
 											<td class="value_form">${itemPerson.personName}</td>
 										</tr>
 										<tr>
@@ -136,11 +184,11 @@
 											<td class="value_form">${itemPerson.amountMoneyTotalinAMonthStringValue} VND</td>
 										</tr>
 										<tr>
-											<td class="label_form">TotalAmountAlreadyPaid:</td>
+											<td class="label_form">Total Already Paid:</td>
 											<td class="value_form">${itemPerson.amountMoneyAlreayPaidStringValue} VND</td>
 										</tr>
 										<tr>
-											<td class="label_form">TotalAmountMustPaid</td>
+											<td class="label_form">Total Must Pay:</td>
 											<td class="value_form" style="background-color:SeaGreen; color: white;"> ${itemPerson.amountMoneyMustPayStringValue} VND</td>
 										</tr>
 									</table>
@@ -149,7 +197,7 @@
 <!-- 										<p>TotalAmountAlreadyPaid: -->
 <%-- 											${itemPerson.amountMoneyAlreayPaid}</p> --%>
 <%-- 										<p>TotalAmountMustPaid: ${itemPerson.amountMoneyMustPay}</p> --%>
-									<div class="col-md-1"></div>
+<!-- 									<div class="col-md-2"></div> -->
 									</div>
 									
 								</c:forEach>
