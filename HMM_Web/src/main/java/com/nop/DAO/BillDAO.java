@@ -3,7 +3,8 @@ package com.nop.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,12 +13,12 @@ import com.nop.DTO.Bill;
 import com.nop.webhmm.HibernateUtil;
 
 public class BillDAO {
-	private static final Logger logger = Logger.getLogger(BillDAO.class);
+	private static final Logger logger = LoggerFactory.getLogger(BillDAO.class);
 	 Session session = null;
 	public BillDAO(){
-		
+
 	}
-	
+
 	public List<Bill> getBills() {
        Session session = null;
        logger.info(this.toString()+"-start getBills()");
@@ -33,7 +34,7 @@ public class BillDAO {
 //               return (List<Bill>) queryList;
 //           }
            return session.createCriteria(Bill.class).list();
-           
+
        } catch (Exception e) {
        	 logger.error("BillDAO"+"-start getBills():"+e.getMessage());
            return null;
@@ -63,7 +64,7 @@ public class BillDAO {
            session.close();
        }
    }
-   
+
    public Bill findBillByBillName(String BillName) {
        Session session = null;
        logger.info(this.toString()+"-start findBillByBillName()");
@@ -85,7 +86,7 @@ public class BillDAO {
            session.close();
        }
    }
-   
+
    public List<Bill> findBillByMonth(String month) {
        Session session = null;
        logger.info(this.toString()+"-start findBillByBillName()");

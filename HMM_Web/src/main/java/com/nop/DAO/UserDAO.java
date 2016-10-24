@@ -2,7 +2,8 @@ package com.nop.DAO;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,19 +14,19 @@ import com.nop.webhmm.HibernateUtil;
 
 @Component
 public class UserDAO {
-	private static final Logger logger = Logger.getLogger(UserDAO.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserDAO.class);
 	 Session session = null;
 	public UserDAO(){
-		
+
 	}
-	
+
 	public List<User> getUsers() {
         Session session = null;
         logger.info(this.toString()+"-start getUsers()");
         try {
             session = HibernateUtil.getInstance().getSession();
             Query query = session.createQuery("from User s");
- 
+
             List queryList = query.list();
             if (queryList != null && queryList.isEmpty()) {
                 return null;
@@ -40,7 +41,7 @@ public class UserDAO {
             session.close();
         }
     }
- 
+
     public User findUserById(int id) {
         Session session = null;
         logger.info(this.toString()+"-start findUserById()");
@@ -48,7 +49,7 @@ public class UserDAO {
             session = HibernateUtil.getInstance().getSession();
             Query query = session.createQuery("from User s where s.id = :id");
             query.setParameter("id", id);
- 
+
             List queryList = query.list();
             if (queryList != null && queryList.isEmpty()) {
                 return null;
@@ -62,7 +63,7 @@ public class UserDAO {
             session.close();
         }
     }
-    
+
     public User findUserByUserName(String userName) {
         Session session = null;
         logger.info(this.toString()+"-start findUserByUserName()");
@@ -70,7 +71,7 @@ public class UserDAO {
             session = HibernateUtil.getInstance().getSession();
             Query query = session.createQuery("from User s where s.userName = :userName");
             query.setParameter("userName", userName);
- 
+
             List queryList = query.list();
             if (queryList != null && queryList.isEmpty()) {
                 return null;
@@ -84,7 +85,7 @@ public class UserDAO {
             session.close();
         }
     }
- 
+
     public void updateUser(User User) {
         Session session = null;
         try {
@@ -97,7 +98,7 @@ public class UserDAO {
             session.close();
         }
     }
- 
+
     public User addUser(User User) {
         Session session = null;
         Transaction transaction = null;
@@ -113,7 +114,7 @@ public class UserDAO {
             return null;
         }
     }
- 
+
     public void deleteUser(int id) {
         Session session = null;
         try {
@@ -129,5 +130,5 @@ public class UserDAO {
             session.close();
         }
     }
- 
+
 }

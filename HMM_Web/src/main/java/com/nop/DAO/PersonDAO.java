@@ -2,7 +2,8 @@ package com.nop.DAO;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,12 +12,12 @@ import com.nop.DTO.Person;
 import com.nop.webhmm.HibernateUtil;
 
 public class PersonDAO {
-	private static final Logger logger = Logger.getLogger(PersonDAO.class);
+	private static final Logger logger = LoggerFactory.getLogger(PersonDAO.class);
 	 Session session = null;
 	public PersonDAO(){
-		
+
 	}
-	
+
 	public List<Person> getPersons() {
        Session session = null;
        logger.info(this.toString()+"-start getPersons()");
@@ -60,7 +61,7 @@ public class PersonDAO {
            session.close();
        }
    }
-   
+
    public Person findPersonByPersonName(String PersonName) {
        Session session = null;
        logger.info(this.toString()+"-start findPersonByPersonName()");
