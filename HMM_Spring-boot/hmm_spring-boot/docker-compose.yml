@@ -1,0 +1,16 @@
+version: '2'
+services:
+  local:
+    container_name: edge-file-transfer
+    mem_limit: 512MB
+    ports:
+     - "9093:8083"
+    image: "edge-file-transfer"
+    env_file:
+     - docker.env
+    volumes:
+     - ~/Devbox/reusablecomponents/docker-edge-file-transfer/config:/mount/config
+     - ~/Devbox/reusablecomponents/docker-edge-file-transfer/files:/mount/files
+   
+
+ 

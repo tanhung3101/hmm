@@ -1,0 +1,61 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/hmm
+    username: postgres
+    password: sa
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  session:
+    store-type: none
+  
+server:
+  port: 8083
+  session:
+    timeout: 100
+---
+spring:
+  profiles: docker
+  datasource:
+   driver-class-name: org.h2.Driver
+   url: jdbc:h2:${DB_FILE_PATH};DB_CLOSE_ON_EXIT=FALSE;PAGE_SIZE=10240
+   username: ${H2_USERNAME}
+   password: 
+   platform: h2
+   initialize: false
+   test-while-idle: true
+  jpa:
+   database: H2
+   database-platform: org.hibernate.dialect.H2Dialect
+   hibernate:
+     ddl-auto: update
+  h2:
+   console:
+      settings:
+        web-allow-others: true
+      path: /h2-console
+      enabled: true
+
+scheduler:
+  time: ${SCHEDULER_TIME}
+  resetDbTime: ${SCHEDULER_RESET_DB_TIME}
+  
+server:
+  port: 8083
+  
+
+  

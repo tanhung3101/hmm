@@ -1,0 +1,16 @@
+version: '2'
+services:
+  local:
+   container_name: edge-file-transfer
+   mem_limit: 1G
+   ports:
+     - "9093:8083"
+   image: "edge-file-transfer"
+   env_file:
+    - docker.env
+   volumes:
+    - ~/edge-config:/Users/localuser/edge-config
+    - ~/upload:/Users/localuser/upload
+   
+
+ 
